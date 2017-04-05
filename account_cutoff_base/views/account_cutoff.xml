@@ -108,7 +108,7 @@
                 <field name="cutoff_amount"/>
                 <field name="company_currency_id" invisible="1"/>
             </group>
-            <group name="tax" string="Cut-off Taxes Lines" /> <!-- invisible="'accrued' not in context.get('type', '-')">  -->
+            <group name="tax" string="Cut-off Taxes Lines" > <!-- invisible="'accrued' not in context.get('type', '-')">  -->
                 <field name="tax_line_ids" nolabel="1"/>
             </group>
         </form>
