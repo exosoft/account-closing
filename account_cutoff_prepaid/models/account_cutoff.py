@@ -5,7 +5,6 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError, ValidationError
 
-
 class AccountCutoff(models.Model):
     _inherit = 'account.cutoff'
 
@@ -88,6 +87,10 @@ class AccountCutoff(models.Model):
             'Should never happen. Total days should always be > 0'
         cutoff_amount = (aml.debit - aml.credit) *\
             prepaid_days / float(total_days)
+
+        # Round the cutoff amount
+        cutoff_amount = self.company_currency_id.round(cutoff_amount)
+
         # we use account mapping here
         if aml.account_id.id in mapping:
             cutoff_account_id = mapping[aml.account_id.id]
